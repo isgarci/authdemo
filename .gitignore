@@ -1,2 +1,5 @@
 frontend/src/firebaseConfig.json
 server/src/firebase/credentials.json
+
+# Node.js dependency directory
+node_modules/
