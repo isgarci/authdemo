@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 
 class ResetPassword extends React.Component{
@@ -25,11 +25,12 @@ class ResetPassword extends React.Component{
 
         await auth.sendPasswordResetEmail(this.state.email).then(
             async (result) => {
+                const navigate = useNavigate();
                 this.setState({
                   email: ""
                 });
                 alert("Check you email and follow the reset-password link")
-                this.props.history.push("/login");
+                navigate("/login");
               },
               function (error) {
                 alert(error)
@@ -62,5 +63,5 @@ class ResetPassword extends React.Component{
     }
 }
 
-export default withRouter(ResetPassword);
+export default ResetPassword;
 

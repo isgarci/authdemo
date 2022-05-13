@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 
 class EmailRegister extends React.Component{
@@ -32,6 +32,7 @@ class EmailRegister extends React.Component{
 
         await auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then(
             async (result) => {
+                const navigate = useNavigate();
                 //3 - pick the result and store the token
                 const token = await auth?.currentUser?.getIdToken(true);
                 await auth?.currentUser?.sendEmailVerification();
@@ -40,13 +41,13 @@ class EmailRegister extends React.Component{
                 if (token) {
                   //5 - put the token at localStorage (We'll use this to make requests)
                   localStorage.setItem("@token", token);
-                  //6 - navigate user to the book list
+                  //6 - navigate user to the WhiteboardItem list
                   this.setState({
                     email: "",
                     password: ""
                   });
-                  alert("Press on the verification link that we sent to you email address")
-                  this.props.history.push("/login");
+                  alert("Press on the verification link that we sent to you email address");                  
+                  navigate("/login");
                 }
               },
               function (error) {
@@ -91,5 +92,5 @@ class EmailRegister extends React.Component{
     }
 }
 
-export default withRouter(EmailRegister);
+export default EmailRegister;
 

@@ -5,31 +5,31 @@ const authMiddleware = require("./auth-middleware");
 const app = express();
 app.use(cors());
 
-const books = [
+const WhiteboardItems = [
   {
     id: 1,
-    name: "Harry Potter",
-    image:
-      "https://pmpub-catalogue.s3-eu-west-1.amazonaws.com/covers/web/9781781100240.jpg",
+    name: "Nothing to say today",
+    link:
+      "https://cpb-us-e1.wpmucdn.com/you.stonybrook.edu/dist/3/21/files/2016/02/post-it-note-1gr38qq-1m0t1rn.jpg",
   },
   {
     id: 2,
-    name: "Clean Code",
-    image:
-      "https://images-na.ssl-images-amazon.com/images/I/41jEbK-jG+L._SX374_BO1,204,203,200_.jpg",
+    name: "Fire Drill",
+    link:
+      "https://www.youtube.com/watch?v=gO8N3L_aERg",
   },
   {
     id: 3,
-    name: "Javascript: The good parts",
-    image: "https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg",
+    name: "Happy Birthday",
+    link: "<iframe src='https://giphy.com/embed/xUOrw4tlQfCTGmD5Kw' width='480' height='480' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='https://giphy.com/gifs/latenightseth-seth-meyers-birthday-cake-xUOrw4tlQfCTGmD5Kw'>via GIPHY</a></p>",
   },
 ];
 
 //app.use("/", authMiddleware);
 app.use(authMiddleware);
 
-app.get("/books", (request, response) => {
-  return response.send({ books });
+app.get("/WhiteboardItems", (request, response) => {
+  return response.send({ WhiteboardItems });
 });
 
 app.listen(4000, () => console.log("The server is running at PORT 4000"));

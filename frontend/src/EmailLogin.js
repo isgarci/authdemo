@@ -1,5 +1,5 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React from "react"; 
+import { useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 
 class EmailLogin extends React.Component{
@@ -32,6 +32,7 @@ class EmailLogin extends React.Component{
 
         await auth.signInWithEmailAndPassword(this.state.email, this.state.password).then(
             async (result) => {
+                const navigate = useNavigate();
                 //3 - pick the result and store the token
                 const token = await auth?.currentUser?.getIdToken(true);
 
@@ -39,8 +40,8 @@ class EmailLogin extends React.Component{
                 if (token) {
                   //5 - put the token at localStorage (We'll use this to make requests)
                   localStorage.setItem("@token", token);
-                  //6 - navigate user to the book list
-                  this.props.history.push("/book-list");
+                  //6 - navigate user to the WhiteboardItem list
+                  navigate("/WhiteboardItems");
                 }
               },
               function (error) {
@@ -85,5 +86,5 @@ class EmailLogin extends React.Component{
     }
 }
 
-export default withRouter(EmailLogin);
+export default EmailLogin;
 

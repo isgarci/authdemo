@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import BookList from "./BookList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import WhiteboardItemList from "./WhiteboardItemList";
 import CreateUser from "./CreateUser"
 import SuperLogin from "./SuperLogin"
 
@@ -9,17 +9,17 @@ export default function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
+        <Routes>
           <Route path={"/login"}>
             <SuperLogin />
           </Route>
-          <Route path={"/book-list"}>
-            <BookList />
+          <Route path={"/whiteboardItems"}>
+            <WhiteboardItemList />
           </Route>
           <Route path={"/createUser"}>
             <CreateUser />
           </Route>
-        </Switch>
+        </Routes>
       </BrowserRouter>
     </div>
   );

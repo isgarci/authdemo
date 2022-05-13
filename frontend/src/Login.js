@@ -1,10 +1,9 @@
 import React from "react";
-
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, firebase } from "./firebase";
 
 export default function Login() {
-  const history = useHistory();
+  //const history = useHistory();
   async function googleLogin() {
     //1 - init Google Auth Provider
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -17,8 +16,9 @@ export default function Login() {
         if (token) {
           //5 - put the token at localStorage (We'll use this to make requests)
           localStorage.setItem("@token", token);
-          //6 - navigate user to the book list
-          history.push("/book-list");
+          //6 - navigate user to the WhiteboardItem list
+          const navigate = useNavigate();
+          navigate("/WhiteboardItems");
         }
       },
       function (error) {
