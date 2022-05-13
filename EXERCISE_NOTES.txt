@@ -1,0 +1,21 @@
+
+In this exercise, I had tried to adapt an example of auth configuration using Google Firebase Authenticator into an owned instance of Google Firebase.
+
+The platform Firebase was chosen primarily because of immediate availability at the moment of developing the exercise.
+
+Since Firebase is primarily for development purpose, Azure, GCP or any other production cloud platform would have been chosen if the project were to be deployed in production. 
+
+I had created a Project and a Web app at Google Firebase and configured credentials.json after the parameters provided by the server. 
+
+The example chosen, even though not perfectly implemented, differentiates frontend and backend and uses containerization. For implementation production, probably a different language from javascript would have been preferred.
+
+The example has a raw implementation of a list of items.
+In order to achieve the whiteboard functionality, it should be vastly extended.
+The example is not even close to achieve that purpose. Again, time restrictions.
+
+All the basic domain logic of the collaborative whiteboard is still remaining to be implemented and in this case, I would have probably continued with FCM ( Firebase Cloud Messaging ) in order to implement the messaging functionality:
+https://firebase.google.com/docs/cloud-messaging/fcm-architecture
+
+An alternative consideration would be to use for example, Mesibo platform to take care of the authentication, but an external integration with infrastructure out of the Firebase would have been necessary.   
+
+The exercise is still presenting problems with routing at react. It creates the backend and frontend, but is not running as expected.   
